@@ -92,7 +92,7 @@
 					</div>
 					<div class="form-group">
 				    	<div class="col-sm-offset-3 col-sm-8">
-				    		<button type="submit" class="btn btn-default">注册</button>
+				    		<button type="button" class="btn btn-default" id="registerButton">注册</button>
 				    	</div>
 				  	</div>
 				</form>

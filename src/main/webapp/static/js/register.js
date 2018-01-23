@@ -34,6 +34,9 @@ var register = {
 			register.detail.createCode();
 		});
 		register.validate.register();
+		$('#registerButton').click(function(){
+			$('#registerForm').submit();
+		});
 	},
 	detail : {
 		createCode : function() {
@@ -169,8 +172,8 @@ var register = {
 					}
 				},
 				submitHandler : function(form) {
-					count++;
-					if(param.count != 1){
+					register.param.count++;
+					if(register.param.count != 1){
 						return;
 					}
 					$.ajax({
@@ -179,7 +182,7 @@ var register = {
 						data : $('#registerForm').serialize(),
 						dataType : 'json',
 						success : function(result) {
-							count--;
+							register.param.count--;
 							if (result.status == 'success') {
 								register.param.username = result.user.username;
 								_confirm('登录', '注册成功，是否前往登录？', register.detail.toLogin);
