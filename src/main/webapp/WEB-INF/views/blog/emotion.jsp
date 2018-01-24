@@ -7,38 +7,47 @@
 </head>
 <body>
 	<%@ include file="../common/top.jsp"%>
-	<div class="container" style="min-height: 400px; margin-bottom: 40px;margin-top:25px;">
+	<div class="container emotion-container">
 		<div class="col-sm-8 col-xs-12">
-			<div style="background: #fff;padding:15px;">
-				<textarea rows="4" class="form-control" style="border-radius: 5px 5px 0 0;border: 1px solid #ddd;border-bottom:none;"></textarea>
-				<div style="border: 1px solid #ddd;overflow: hidden;">
-					<i class="fa fa-smile-o fa-lg" aria-hidden="true" style="padding:10px;cursor: pointer;"></i>
-					<button type="button" class="btn btn-default pull-right" style="border:none;border-left:1px solid #ddd;border-radius:0;height:34px;">发&nbsp;&nbsp;送</button>
-					<button type="button" class="btn btn-default pull-right" style="border:none;border-left:1px solid #ddd;border-radius:0;height:34px;">GOAL</button>
+			<div class="emotion-textarea-div">
+				<div id="emotionContent" contenteditable="true" style="height: 140px;padding: 10px;"></div>
+				<div>
+					<i class="fa fa-smile-o fa-lg" aria-hidden="true" id="emotionIcon"></i>
+					<div id="emojoDiv" style="position: absolute;border: 1px solid #ddd;background: #fff;display: none;">
+						<div id="myTabContent" class="tab-content" style="height: 160px;width: 100%;overflow-y:
+						scroll;">
+							<div class="tab-pane fade in active" id="defaultTab"></div>
+							<div class="tab-pane fade" id="moodTab"></div>
+							<div class="tab-pane fade" id="weatherTab"></div>
+							<div class="tab-pane fade" id="foxTab"></div>
+						</div>
+						<ul id="myTab" class="nav nav-tabs" style="margin-bottom: 0;">
+							<li class="active"><a href="#defaultTab" data-toggle="tab">默认</a></li>
+							<li><a href="#moodTab" data-toggle="tab">心情</a></li>
+							<li><a href="#weatherTab" data-toggle="tab">天气</a></li>
+							<li><a href="#foxTab" data-toggle="tab">阿狸</a></li>
+						</ul>
+					</div>
+					<button type="button" class="btn btn-default pull-right">发&nbsp;&nbsp;送</button>
+					<button type="button" class="btn btn-default pull-right">GOAL</button>
 				</div>
 			</div>
-			<div>
-				<div style="background: #fff;margin-top: 20px;padding:15px;">
-					<p>TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest</p>
-					<div>
-						<span>2018-01-21 12:17</span>
-					</div>
+			<div class="emotion-content-div">
+				<p>TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest</p>
+				<div>
+					<span>2018-01-21 12:17</span>
 				</div>
 			</div>
-			<div>
-				<div style="background: #fff;margin-top: 20px;padding:15px;">
-					<p>TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest</p>
-					<div>
-						<span>2018-01-21 12:17</span>
-					</div>
+			<div class="emotion-content-div">
+				<p>TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest</p>
+				<div>
+					<span>2018-01-21 12:17</span>
 				</div>
 			</div>
-			<div>
-				<div style="background: #fff;margin-top: 20px;padding:15px;">
-					<p>TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest</p>
-					<div>
-						<span>2018-01-21 12:17</span>
-					</div>
+			<div class="emotion-content-div">
+				<p>TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest</p>
+				<div>
+					<span>2018-01-21 12:17</span>
 				</div>
 			</div>
 		</div>
@@ -50,8 +59,9 @@
 					</div>
 					<div class="col-md-8 col-sm-12">
 						<ul>
-							<li>昵称：${userInfo.nickname }</li>
-							<li>GOAL：未设置</li>
+							<li><span style="display: inline-block;width: 42px;">昵&nbsp;&nbsp;称</span>：
+							${userInfo.nickname }</li>
+							<li><span style="display: inline-block;width: 42px;">GOAL</span>： 未设置</li>
 							<!-- 初定目标 num<5，任务满满（进行中的多），终结者（完成的比例多），LOSER？？？（失败的比例多） -->
 						</ul>
 					</div>
@@ -70,6 +80,24 @@
 						</span></a>
 					</div>
 				</div>
+			</div>
+			<div style="background: #fff;padding: 15px;margin-top: 20px;">
+				<h5>进行中</h5>
+				<ul>
+					<li><a href="#">[<i>s</i>]good</a></li>
+				</ul>
+			</div>
+			<div style="background: #fff;padding: 15px;margin-top: 20px;">
+				<h5>完成</h5>
+				<ul>
+					<li><a href="#">[<i>s</i>]good</a></li>
+				</ul>
+			</div>
+			<div style="background: #fff;padding: 15px;margin-top: 20px;">
+				<h5>失败</h5>
+				<ul>
+					<li><a href="#">[<i>s</i>]good</a></li>
+				</ul>
 			</div>
 		</div>
 	</div>
