@@ -7,6 +7,10 @@ var emotion = {
         emotion.detail.keyUpEdit();
         emotion.detail.chooseEmoji();
         emotion.detail.toggleEmoji();
+        emotion.detail.initEmotionContent();
+        emotion.detail.initGoalOperation();
+        emotion.detail.showMoreEmotion();
+        emotion.detail.goalBindOperation();
     },
     detail: {
         initEmoji: function () {
@@ -15,7 +19,6 @@ var emotion = {
                 headers: {
                     contentType: "application/x-www-form-urlencoded"
                 },
-                async: false,
                 success: function (data) {
                     var defaultStr = '', moodStr = '', weatherStr = '', foxStr = '';
                     $.each(data, function (index, item) {
@@ -54,7 +57,7 @@ var emotion = {
             });
         },
         chooseEmoji: function () {
-            $('.emotion-icon').on('click', function () {
+            $(document).on('click', '.emotion-icon', function () {
                 // 获取编辑框对象
                 var edit = document.getElementById('emotionContent');
                 // 编辑框设置焦点
@@ -119,20 +122,240 @@ var emotion = {
                 }
                 // 无论如何都要记录最后光标对象
                 lastEditRange = selection.getRangeAt(0);
-                $('#emojoDiv').hide();
+                $('#emojiDiv').hide();
             });
         },
-        toggleEmoji : function () {
+        toggleEmoji: function () {
             $('#emotionIcon').click(function (event) {
-               $('#emojoDiv').toggle();
+                $('#emojiDiv').toggle();
                 event.stopPropagation();
             });
-            $('#emojoDiv').click(function (event) {
-                event.stopPropagation();
+            $(document).click(function (event) {
+                var target = $(event.target);
+                if (target.closest("#emojiDiv").length != 0) return;
+                $('#emojiDiv').hide();
             });
-            $(document).click(function () {
-                $('#emojoDiv').hide();
+        },
+        saveEmotion: function (type) {
+            var text = $('#emotionContent').html();
+            if (text == null || $.trim(text.replace(new RegExp('&nbsp;', 'gm'), '')) == '') {
+                alert('发送内容不能为空！');
+                return;
+            }
+            $.ajax({
+                url: _path + '/blogDo/saveEmotion',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    text: text,
+                    type: type
+                },
+                success: function (data) {
+                    if (data.status != '1') {
+                        alert('保存失败');
+                        return;
+                    }
+                    window.location.reload();
+                }
             });
+        },
+        initEmotionContent: function () {
+            $.ajax({
+                url: _path + '/emotion/getEmotions',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    userId: _userId,
+                    pageNo: emotion.param.pageNo
+                },
+                success: function (data) {
+                    var str = '';
+                    $.each(data.datalist, function (index, item) {
+                        str += '<div class="emotion-content-div"><p>'
+                            + item.emotion + '</p><div><span class="goal-start">'
+                            + item.createTime + '</span></div></div>';
+                    });
+                    if (data.pageNo < data.totalNo) {
+                        str += '<div class="show-more-emotion"><span id="showMoreEmotion"><i class="fa' +
+                            ' fa-angle-double-down"' +
+                            ' aria-hidden="true"></i>' +
+                            ' more</span></div>';
+                        emotion.param.isLast = false;
+                    }
+                    $('#emotions').html(str);
+                }
+            });
+            $.ajax({
+                url: _path + '/emotion/getGoals',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    userId: _userId
+                },
+                success: function (data) {
+                    var inprogressStr = '';
+                    var completedStr = '';
+                    var failuredStr = '';
+                    var inprogressCount = 0;
+                    var completedCount = 0;
+                    var failuredCount = 0;
+                    $.each(data, function (index, item) {
+                        if (item.status == '0') {
+                            inprogressCount++;
+                            if (inprogressStr == '') {
+                                inprogressStr = '<div class="goal-detail-block"' +
+                                    ' id="inProgressGoal"><h5>进行中<span id="progressCount"></span></h5><ul>';
+                            }
+                            if (_isSelf) {
+                                inprogressStr += '<li><p>' + item.goal + '</p><span class="goal-start">' + item.startTime
+                                    + '开始</span><div class="goal-operation" data-id="' + item.id + '">'
+                                    + '<span class="text-success goal-to-success">成功</span>'
+                                    + '<span class="text-warning goal-to-failure">失败</span></div></li>';
+                            } else {
+                                inprogressStr += '<li><p>' + item.goal + '</p><span class="goal-start">' + item.startTime
+                                    + '开始</span></li>';
+                            }
+                        } else if (item.status == '1') {
+                            completedCount++;
+                            if (completedStr == '') {
+                                completedStr = '<div class="goal-detail-block"><h5>完成<span id="completeCount"></span></h5><ul>';
+                            }
+                            completedStr += '<li><p>' + item.goal + '</p><span class="goal-start">'
+                                + item.startTime + '开始</span><span class="goal-end">'
+                                + item.endTime + '成功</span></li>';
+                        } else {
+                            failuredCount++;
+                            if (failuredStr == '') {
+                                failuredStr = '<div class="goal-detail-block"><h5>失败<span id="failureCount"></span></h5><ul>';
+                            }
+                            failuredStr += '<li><p>' + item.goal + '</p><span class="goal-start">'
+                                + item.startTime + '开始</span><span class="goal-end">'
+                                + item.endTime + '结束</span></li>';
+                        }
+                    });
+                    if (data.length > 0) {
+                        emotion.detail.setState(data.length, inprogressCount, completedCount, failuredCount);
+                    }
+                    var detailStr = '';
+                    if (inprogressStr != '') {
+                        inprogressStr += '</ul></div>';
+                        detailStr += inprogressStr;
+                    }
+                    if (completedStr != '') {
+                        completedStr += '</ul></div>'
+                        detailStr += completedStr;
+                    }
+                    if (failuredStr != '') {
+                        failuredStr += '</ul></div>'
+                        detailStr += failuredStr;
+                    }
+                    $('#goalDetials').html(detailStr);
+                    if (inprogressCount != 0) {
+                        $('#progressCount').text('(' + inprogressCount + ')');
+                    }
+                    if (completedCount != 0) {
+                        $('#completeCount').text('(' + completedCount + ')');
+                    }
+                    if (failuredCount != 0) {
+                        $('#failureCount').text('(' + failuredCount + ')');
+                    }
+                }
+            });
+        },
+        initGoalOperation: function () {
+            $(document).on('mouseover', '#inProgressGoal li', function () {
+                $(this).find('.goal-operation').show();
+            }).on('mouseout', '#inProgressGoal li', function () {
+                $(this).find('.goal-operation').hide();
+            });
+        },
+        showMoreEmotion: function () {
+            $(document).on('click', '#showMoreEmotion', function () {
+                emotion.param.pageNo++;
+                $.ajax({
+                    url: _path + '/emotion/getEmotions',
+                    type: 'GET',
+                    dataType: 'json',
+                    data: {
+                        userId: _userId,
+                        pageNo: emotion.param.pageNo
+                    },
+                    success: function (data) {
+                        var str = '';
+                        $.each(data.datalist, function (index, item) {
+                            str += '<div class="emotion-content-div"><p>'
+                                + item.emotion + '</p><div><span class="goal-start">'
+                                + item.createTime + '</span></div></div>';
+                        });
+                        $('.show-more-emotion').before(str);
+                        if (data.pageNo >= data.totalNo) {
+                            emotion.param.isLast = true;
+                            $('.show-more-emotion').hide();
+                        }
+                    }
+                });
+            });
+        },
+        goalBindOperation: function () {
+            $(document).on('click', '.goal-to-success', function () {
+                var id = $(this).parent().attr('data-id');
+                $.ajax({
+                    url: _path + '/blogDo/updateGoal',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        id: id,
+                        type: '1'
+                    },
+                    success: function (data) {
+                        if (data.status = '1') {
+                            alert('操作成功');
+                            window.location.reload();
+                        } else {
+                            alert('操作失败');
+                        }
+                    }
+                });
+            });
+            $(document).on('click', '.goal-to-failure', function () {
+                var id = $(this).parent().attr('data-id');
+                $.ajax({
+                    url: _path + '/blogDo/updateGoal',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        id: id,
+                        type: '2'
+                    },
+                    success: function (data) {
+                        if (data.status = '1') {
+                            alert('操作成功');
+                            window.location.reload();
+                        } else {
+                            alert('操作失败');
+                        }
+                    }
+                });
+            });
+        },
+        setState: function (a, p, c, f) {
+            if (a < 5) {
+                $('#goalState').text('初定目标');
+                return;
+            }
+            if (f / a >= 0.5) {
+                $('#goalState').text('LOSER？？？');
+                return;
+            }
+            if (c / a >= 0.5) {
+                $('#goalState').text('终结者');
+                return;
+            }
+            $('#goalState').text('任务满满');
         }
+    },
+    param: {
+        pageNo: 1,
+        isLast: true
     }
 }

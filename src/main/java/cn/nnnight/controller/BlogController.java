@@ -98,7 +98,7 @@ public class BlogController {
 		mv.addObject("visitors", userService.findBlogVisitor(blogId));
 		mv.addObject("self", AuthUtil.getId() == userId ? true : false);
 		mv.addObject("isType", isType);
-		mv.addObject("comments", blogCommentService.selectComments(blogId, 1, 10));
+		mv.addObject("comments", blogCommentService.selectComments(blogId, 1, 1000));
 		mv.addObject("diaryType", diaryType);
 		session.setAttribute(Constants.WHOLE_USER_ID, userId);
 		return mv;
