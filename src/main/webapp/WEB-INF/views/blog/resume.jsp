@@ -18,7 +18,7 @@
 				<li class="resume-phone">&nbsp;<i class="fa fa-mobile fa-lg" aria-hidden="true"></i>&nbsp;18504246189</li>
 				<li class="resume-email"><i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;939228292@qq.com</li>
 			</ul>
-			<a href="#" id="resume-download">简历下载</a>
+			<a href="#" id="resume-download" onclick="alert('抱歉, 目前未上传简历')">简历下载</a>
 		</div>
 	</div>
 	<div class="container" style="margin-top:50px;">
@@ -47,7 +47,16 @@
 						</span>
 					</li>
 					<li>
-						Hibernate
+						Spring MVC
+						<span class="resume-skill-s">
+							<i class="fa fa-star" aria-hidden="true"></i>
+							<i class="fa fa-star" aria-hidden="true"></i>
+							<i class="fa fa-star" aria-hidden="true"></i>
+							<i class="fa fa-star" aria-hidden="true"></i>
+						</span>
+					</li>
+					<li>
+						Spring Boot
 						<span class="resume-skill-s">
 							<i class="fa fa-star" aria-hidden="true"></i>
 							<i class="fa fa-star" aria-hidden="true"></i>
@@ -56,12 +65,12 @@
 						</span>
 					</li>
 					<li>
-						Spring MVC
+						Hibernate
 						<span class="resume-skill-s">
 							<i class="fa fa-star" aria-hidden="true"></i>
 							<i class="fa fa-star" aria-hidden="true"></i>
 							<i class="fa fa-star" aria-hidden="true"></i>
-							<i class="fa fa-star" aria-hidden="true"></i>
+							<i class="fa fa-star-half-o" aria-hidden="true"></i>
 						</span>
 					</li>
 					<li>
@@ -74,16 +83,16 @@
 						</span>
 					</li>
 					<li>
-						Spring Security
+						Spring Data JPA
 						<span class="resume-skill-s">
+							<i class="fa fa-star" aria-hidden="true"></i>
 							<i class="fa fa-star" aria-hidden="true"></i>
 							<i class="fa fa-star" aria-hidden="true"></i>
 						</span>
 					</li>
 					<li>
-						EasyUI
+						Spring Security
 						<span class="resume-skill-s">
-							<i class="fa fa-star" aria-hidden="true"></i>
 							<i class="fa fa-star" aria-hidden="true"></i>
 							<i class="fa fa-star" aria-hidden="true"></i>
 						</span>
@@ -103,6 +112,14 @@
 							<i class="fa fa-star" aria-hidden="true"></i>
 							<i class="fa fa-star" aria-hidden="true"></i>
 							<i class="fa fa-star" aria-hidden="true"></i>
+							<i class="fa fa-star-half-o" aria-hidden="true"></i>
+						</span>
+					</li>
+					<li>
+						EasyUI
+						<span class="resume-skill-s">
+							<i class="fa fa-star" aria-hidden="true"></i>
+							<i class="fa fa-star" aria-hidden="true"></i>
 							<i class="fa fa-star" aria-hidden="true"></i>
 						</span>
 					</li>
@@ -116,7 +133,7 @@
 						</span>
 					</li>
 					<li>
-						Html + CSS
+						HTML5 + CSS3
 						<span class="resume-skill-s">
 							<i class="fa fa-star" aria-hidden="true"></i>
 							<i class="fa fa-star" aria-hidden="true"></i>
@@ -140,20 +157,12 @@
 							<i class="fa fa-star" aria-hidden="true"></i>
 						</span>
 					</li>
-					<li>
-						RESTFul
-						<span class="resume-skill-s">
-							<i class="fa fa-star" aria-hidden="true"></i>
-							<i class="fa fa-star" aria-hidden="true"></i>
-							<i class="fa fa-star" aria-hidden="true"></i>
-						</span>
-					</li>
 					<li class="resume-hidden-skill">
 						Struts2
 						<span class="resume-skill-s">
 							<i class="fa fa-star" aria-hidden="true"></i>
 							<i class="fa fa-star" aria-hidden="true"></i>
-							<i class="fa fa-star" aria-hidden="true"></i>
+							<i class="fa fa-star-half-o" aria-hidden="true"></i>
 						</span>
 					</li>
 					<li class="resume-hidden-skill">
@@ -165,25 +174,18 @@
 						</span>
 					</li>
 					<li class="resume-hidden-skill">
-						Spring Data JPA
+						MySQL
 						<span class="resume-skill-s">
 							<i class="fa fa-star" aria-hidden="true"></i>
 							<i class="fa fa-star" aria-hidden="true"></i>
-							<i class="fa fa-star-half-o" aria-hidden="true"></i>
+							<i class="fa fa-star" aria-hidden="true"></i>
 						</span>
 					</li>
 					<li class="resume-hidden-skill">
-						MySQL/SQL Server
+						SQL Server
 						<span class="resume-skill-s">
 							<i class="fa fa-star" aria-hidden="true"></i>
 							<i class="fa fa-star" aria-hidden="true"></i>
-							<i class="fa fa-star" aria-hidden="true"></i>
-							<i class="fa fa-star-half-o" aria-hidden="true"></i>
-						</span>
-					</li>
-					<li class="resume-hidden-skill">
-						Oracle
-						<span class="resume-skill-s">
 							<i class="fa fa-star" aria-hidden="true"></i>
 							<i class="fa fa-star-half-o" aria-hidden="true"></i>
 						</span>
@@ -193,19 +195,6 @@
 						<span class="resume-skill-s">
 							<i class="fa fa-star" aria-hidden="true"></i>
 							<i class="fa fa-star" aria-hidden="true"></i>
-						</span>
-					</li>
-					<li class="resume-hidden-skill">
-						Jenkins
-						<span class="resume-skill-s">
-							<i class="fa fa-star" aria-hidden="true"></i>
-						</span>
-					</li>
-					<li class="resume-hidden-skill">
-						C#
-						<span class="resume-skill-s">
-							<i class="fa fa-star" aria-hidden="true"></i>
-							<i class="fa fa-star-half-o" aria-hidden="true"></i>
 						</span>
 					</li>
 					<li class="resume-hidden-skill">
@@ -224,6 +213,13 @@
 							<i class="fa fa-star-half-o" aria-hidden="true"></i>
 						</span>
 					</li>
+					<li class="resume-hidden-skill">
+						Excel
+						<span class="resume-skill-s">
+							<i class="fa fa-star" aria-hidden="true"></i>
+							<i class="fa fa-star-half-o" aria-hidden="true"></i>
+						</span>
+					</li>
 					<li id="moreSkill">
 						<a class="showMore" href="javascript:void(0);">显示更多<i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
 					</li>
@@ -235,7 +231,6 @@
 				</div>
 				<ul class="resume-skill-ul">
 					<li>英语（一般）</li>
-					<li>日语（简单）</li>
 				</ul>
 			</div>
 			<div class="resume-big-div">
@@ -254,15 +249,8 @@
 			<div class="resume-big-div resume-aboutme">
 				<h4>ABOUT ME</h4>
 				<p>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2016年毕业于大连交通大学测控技术与仪器+软件工程专业。
-					2015年10月起在大连网居网实习，独立负责社区模块，共同开发个人中心模块。
-					2016年2月起在HPE实习，接触Spring Data JPA和Primefaces。<br>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2016年7月正式加入HPE，开发了一套简单的Java技术面试系统，供team面试使用。
-					8月进入可口可乐原物料追溯系统项目，对系统功能进行修改开发。
-					10月进入唐钢城市服务项目，远程支持修复bug。
-					11月底进入Yum MenuCenter项目，负责开发任务。<br>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;个人对SpringMVC比较熟悉，自己研究了Spring + Hibernate + SpringMVC + Spring Security相关框架，独立搭建了此系统。
-					个人能力强，负责任，爱学习，入手新技术快。
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2016年毕业于大连交通大学测控技术与仪器+软件工程专业。2015年10月起，在大连网居网实习，负责个人中心和社区模块，实践接触SSH框架。2016年2月起，在HPE实习，了解了不同框架下前后台的使用。
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2016年7月正式加入HPE，开发了一个java面试系统供team面试使用。8月底进入可口可乐原料追溯系统项目，对系统功能进行修改开发。10月进入唐钢城市服务项目，远程支持修复bug。12月进入Yum MenuCenter项目，负责PC端部分页面开发，手端机H5开发，FTP，微软云等功能。个人学习能力强，入手新技术比较快。在职期间，连续两年收到客户的感谢信。
 				</p>
 			</div>
 			<div class="resume-big-div resmue-experience">
@@ -318,18 +306,15 @@
             	<div>
             		<h4><i>工作内容</i></h4>
 					<ul id="resumeModalContent">
-						<li>后台功能开发</li>
-						<li>文件上传功能开发</li>
 					</ul>
             	</div>
 				<div style="margin-top:20px;">
 					<h4><i>主要技术</i></h4>
-					<span id="resumeModalTech">Spring + Hibernate + SpringMVC + Spring Security + EasyUI + SQL Server</span>
+					<span id="resumeModalTech">S</span>
 				</div>
 				<div style="margin-top:20px;">
 					<h4><i>自我评价</i></h4>
-					<p id="resumeModalComment">阿萨是非法违法的所发生的发顺丰到付阿萨是非法违法的所发生的发顺丰到付阿萨
-					是非法违法的所发生的发顺丰到付阿萨是非法违法的所发生的发顺丰到付阿萨是非法违法的所发生的发顺丰到付</p>
+					<p id="resumeModalComment"></p>
 				</div>
 			</div>
             <div class="modal-footer">
